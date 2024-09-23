@@ -4,6 +4,7 @@ const Restaurant = require("../models/index")
 const db = require("../db/connection");
 const seed = require("../seedData")
 //TODO: Create your GET Request Route Below: 
+app.use(express.json())
 app.use(express.urlencoded())
 app.get('/restaurants', async (req, res) => {
     let result = await Restaurant.findAll()
@@ -25,7 +26,7 @@ app.put('/restaurants/:id', async (req, res) => {
     res.json(result)
 })
 app.delete('/restaurants/:id', async (req, res) => {
-    let result = await Restaurant.destroy(req.params.id)
+    let result = await Restaurant.destroy({where:{id:req.params.id}})
     res.json(result)
 })
 
