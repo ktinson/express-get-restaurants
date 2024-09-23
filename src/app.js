@@ -4,6 +4,7 @@ const Restaurant = require("../models/index")
 const db = require("../db/connection");
 const seed = require("../seedData")
 //TODO: Create your GET Request Route Below: 
+app.use(express.urlencoded())
 app.get('/restaurants', async (req, res) => {
     let result = await Restaurant.findAll()
     res.json(result)
