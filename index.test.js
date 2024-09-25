@@ -5,8 +5,10 @@ const syncSeed = require('./seed')
 const { execSync } = require('child_process');
 execSync('npm install');
 execSync('npm run seed');
-
 let resQuant
+const router = require('./routes/restaurants')
+
+app.use('/restaurants', router)
 describe('testing routes/methods', ()=>{
     beforeAll(async () =>{
         await syncSeed()
